@@ -1,0 +1,141 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://404 Characters/Hole.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/astro867.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gamearea/Game.gd" type="Script" id=3]
+[ext_resource path="res://404 Characters/0.tscn" type="PackedScene" id=4]
+[ext_resource path="res://404 Characters/4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Yellowtail-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://load/ButtonTheme.tres" type="Theme" id=7]
+[ext_resource path="res://gamearea/CountdownToResumeGame.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 210
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="Game" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 3 )
+restart_scene = "res://load/RestartGame.tscn"
+countdown_scene = ExtResource( 8 )
+four_scene = ExtResource( 5 )
+oh_scene = ExtResource( 4 )
+wait_limit = 0.775
+wait_quotient = 0.925
+
+[node name="InstructionLabel" type="Label" parent="." groups=[
+"hide_on_pause",
+]]
+margin_right = 800.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.560784, 0.560784, 0.560784, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Bonk the zero, but avoid the fours!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoleScene" parent="." groups=[
+"hide_on_pause",
+"holes",
+] instance=ExtResource( 1 )]
+position = Vector2( 150, 150 )
+
+[node name="HoleScene2" parent="." groups=[
+"hide_on_pause",
+"holes",
+] instance=ExtResource( 1 )]
+position = Vector2( 400, 150 )
+
+[node name="HoleScene3" parent="." groups=[
+"hide_on_pause",
+"holes",
+] instance=ExtResource( 1 )]
+position = Vector2( 650, 150 )
+
+[node name="HoleScene4" parent="." groups=[
+"hide_on_pause",
+"holes",
+] instance=ExtResource( 1 )]
+position = Vector2( 150, 350 )
+
+[node name="HoleScene5" parent="." groups=[
+"hide_on_pause",
+"holes",
+] instance=ExtResource( 1 )]
+position = Vector2( 400, 350 )
+
+[node name="HoleScene6" parent="." groups=[
+"hide_on_pause",
+"holes",
+] instance=ExtResource( 1 )]
+position = Vector2( 650, 350 )
+
+[node name="PauseLabel" type="Label" parent="."]
+visible = false
+margin_top = 100.0
+margin_right = 800.0
+margin_bottom = 369.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.831373, 0.639216, 0.639216, 1 )
+custom_constants/shadow_offset_x = -61
+custom_constants/shadow_offset_y = 30
+text = "Paused!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_top = 500.0
+margin_right = 800.0
+margin_bottom = 528.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.560784, 0.560784, 0.560784, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Score: 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 5.0
+
+[node name="PauseButton" type="Button" parent="."]
+pause_mode = 2
+margin_top = 560.0
+margin_right = 800.0
+margin_bottom = 600.0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 4 )
+text = "Press P, click or tap here to Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
