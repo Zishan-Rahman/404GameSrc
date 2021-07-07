@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://404 Characters/Hole.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/astro867.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Yellowtail-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://load/ButtonTheme.tres" type="Theme" id=7]
 [ext_resource path="res://gamearea/CountdownToResumeGame.tscn" type="PackedScene" id=8]
+[ext_resource path="res://common/Shameless Plug Button.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -136,6 +137,9 @@ text = "Press P, click or tap here to Pause"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PlugButton" parent="." instance=ExtResource( 9 )]
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]

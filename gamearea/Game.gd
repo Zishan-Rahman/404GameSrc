@@ -10,6 +10,7 @@ onready var timer:= $Timer
 onready var scorelabel:= $ScoreLabel
 onready var pausebutton:= $PauseButton
 onready var pauselabel:= $PauseLabel
+onready var plugbutton:= $PlugButton
 
 #preloading certain scenes and being able to add them to the tree
 export (String, FILE, "*.tscn") var restart_scene
@@ -90,6 +91,7 @@ func _on_score_update(): #when told to update the score, update the score
 
 func _on_PauseButton_pressed(): #when the game is told to pause
 	pauselabel.visible = not pauselabel.visible
+	plugbutton.visible = not plugbutton.visible
 	if get_tree().paused:
 		pausebutton.text = "Press P, click or tap here to Pause"
 		#play the countdown scene and wait until it's finished to carry on

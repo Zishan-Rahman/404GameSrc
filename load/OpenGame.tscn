@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/404.png" type="Texture" id=1]
 [ext_resource path="res://assets/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://load/OpenGame.gd" type="Script" id=3]
 [ext_resource path="res://gamearea/Game.tscn" type="PackedScene" id=4]
 [ext_resource path="res://load/ButtonTheme.tres" type="Theme" id=5]
+[ext_resource path="res://common/Shameless Plug Button.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -34,5 +35,9 @@ text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Shameless Plug Button" parent="." instance=ExtResource( 6 )]
+margin_top = 525.0
+margin_bottom = 557.0
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
